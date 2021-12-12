@@ -8,6 +8,7 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 
 
+
 namespace RandomGiftCardDB
 {
     public class myFunctions
@@ -50,6 +51,31 @@ namespace RandomGiftCardDB
                 count++;
             }
             myConn.Close();
+
+            return cards;
+        }
+
+        public static string[] makeRandom(string[] names, string[] types)
+        {
+            string[] cards = new string[65];
+
+            int count = 0;
+
+            var rand = new Random();
+
+            for(int i = 0; i < 20; i++)
+            {
+                int num = rand.Next(0, 10);
+                int price = rand.Next(9, 101);
+
+                int index = count * 3;
+
+                cards[index] = names[num];
+                cards[index + 1] = types[num];
+                cards[index + 2] = price.ToString();
+
+                count++;
+            }
 
             return cards;
         }
