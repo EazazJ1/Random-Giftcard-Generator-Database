@@ -175,6 +175,75 @@ namespace RandomGiftCardDB
 
         }
 
+        public static void getHighLowAmount(MySqlConnection myConn)
+        {
+            //string[] names = new string[10];
+            string[] high = new string[3];
+            myConn.Open();
+            string getTotal = "SELECT * FROM random ORDER BY Amount ASC;";
+            MySqlCommand Cmd = new MySqlCommand(getTotal, myConn);
+            MySqlDataReader RDR = Cmd.ExecuteReader();
+
+            while(RDR.Read())
+            {
+                high[0] = RDR.GetString(0);
+                high[1] = RDR.GetString(1);
+                high[2] = Convert.ToString(RDR.GetString(2));
+            }
+
+            myConn.Close();
+
+            //string[] names = new string[10];
+            string[] low = new string[3];
+            myConn.Open();
+            string getLow = "SELECT * FROM random ORDER BY Amount DESC;";
+            MySqlCommand CmdONE = new MySqlCommand(getLow, myConn);
+            MySqlDataReader rdr = CmdONE.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                low[0] = rdr.GetString(0);
+                low[1] = rdr.GetString(1);
+                low[2] = Convert.ToString(rdr.GetString(2));
+            }
+
+            myConn.Close();
+
+            Console.WriteLine("{0}, {1}, {2}", high[0], high[1], high[2]);
+            Console.WriteLine("{0}, {1}, {2}", low[0], low[1], low[2]);
+
+
+            //myConn.Open();
+            //string getAll = "SELECT * FROM random;";
+            //MySqlCommand CmdTwo = new MySqlCommand(getAll, myConn);
+            //MySqlDataReader rdr = CmdTwo.ExecuteReader();
+
+            //string[] cards = new string[60];
+            //int count = 0;
+            //int index = 0;
+            //while (rdr.Read())
+            //{
+            //    index = count * 3;
+
+            //    cards[index] = rdr.GetFieldValue<string>(0);
+            //    cards[index + 1] = rdr.GetFieldValue<string>(1);
+            //    cards[index + 2] = Convert.ToString(rdr.GetFieldValue<int>(2));
+
+
+            //    count++;
+            //}
+
+            //for(int i = 0; i < 60; i++)
+            //{
+            //    Console.WriteLine("{0}", cards[i]);
+            //}
+
+            //myConn.Close();
+
+
+            //return sum;
+        }
+
 
 
     }

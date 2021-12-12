@@ -46,10 +46,10 @@ namespace RandomGiftCardDB
 
                 //myFunctions.getTotalAmount(myConn);
 
-                int average = myFunctions.getAverageAmount(myConn);
-                Console.WriteLine("{0}", average);
+                // int average = myFunctions.getAverageAmount(myConn);
+                // Console.WriteLine("{0}", average);
 
-
+                myFunctions.getHighLowAmount(myConn);
             }
             catch (Exception ex)
             {
