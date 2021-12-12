@@ -69,31 +69,6 @@ namespace RandomGiftCardDB
                     }
 
                 }
-               
-                //for (int i = 0; i < 10; i++)
-                //{
-                //    Console.WriteLine("{0}", giftCards[i]);
-                //}
-
-                //string create = "CREATE TABLE RANDOM (Name varchar(25), Type varchar(25), Amount int);";
-                //MySqlCommand cmd = new MySqlCommand(create, myConn);
-                //myConn.Open();
-
-                //cmd.ExecuteNonQuery();
-                //myConn.Close();
-
-                //myFunctions.createRandomTable(myConn);
-
-                //myFunctions.dropRandomTable(myConn);
-
-                //myFunctions.AddToRandomTable(myConn, randomCards);
-
-                //myFunctions.getTotalAmount(myConn);
-
-                // int average = myFunctions.getAverageAmount(myConn);
-                // Console.WriteLine("{0}", average);
-
-                //myFunctions.getHighLowAmount(myConn);
             }
             catch (Exception ex)
             {

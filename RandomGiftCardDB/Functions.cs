@@ -144,22 +144,18 @@ namespace RandomGiftCardDB
 
         public static int getTotalAmount(MySqlConnection myConn)
         {
-            //string[] names = new string[10];
-
             myConn.Open();
             string getTotal = "SELECT SUM(Amount) AS TotalAmount FROM random;";
             MySqlCommand Cmd = new MySqlCommand(getTotal, myConn);
 
             MySqlDataReader rdr = Cmd.ExecuteReader();
-            //int count = 0;
+            
             int sum = 0;
             while (rdr.Read())
             {
-                //names[count] = rdr.GetString(0);
-                //count++;
                 sum = rdr.GetInt32(0);
             }
-            //Console.WriteLine("{0}", sum);
+
             myConn.Close();
 
             return sum;
@@ -177,7 +173,7 @@ namespace RandomGiftCardDB
 
         public static void getHighLowAmount(MySqlConnection myConn)
         {
-            //string[] names = new string[10];
+            //Get the highest amount
             string[] high = new string[3];
             myConn.Open();
             string getHigh = "SELECT * FROM random ORDER BY Amount ASC;";
@@ -193,7 +189,7 @@ namespace RandomGiftCardDB
 
             myConn.Close();
 
-            //string[] names = new string[10];
+            // Get the lowest amount
             string[] low = new string[3];
             myConn.Open();
             string getLow = "SELECT * FROM random ORDER BY Amount DESC;";
@@ -212,36 +208,6 @@ namespace RandomGiftCardDB
             Console.WriteLine("Highest: {0}, {1}, ${2}", high[0], high[1], high[2]);
             Console.WriteLine("Lowest: {0}, {1}, ${2}", low[0], low[1], low[2]);
 
-
-            //myConn.Open();
-            //string getAll = "SELECT * FROM random;";
-            //MySqlCommand CmdTwo = new MySqlCommand(getAll, myConn);
-            //MySqlDataReader rdr = CmdTwo.ExecuteReader();
-
-            //string[] cards = new string[60];
-            //int count = 0;
-            //int index = 0;
-            //while (rdr.Read())
-            //{
-            //    index = count * 3;
-
-            //    cards[index] = rdr.GetFieldValue<string>(0);
-            //    cards[index + 1] = rdr.GetFieldValue<string>(1);
-            //    cards[index + 2] = Convert.ToString(rdr.GetFieldValue<int>(2));
-
-
-            //    count++;
-            //}
-
-            //for(int i = 0; i < 60; i++)
-            //{
-            //    Console.WriteLine("{0}", cards[i]);
-            //}
-
-            //myConn.Close();
-
-
-            //return sum;
         }
 
         public static void getRandomListFromDb(MySqlConnection myConn)
@@ -275,11 +241,6 @@ namespace RandomGiftCardDB
                 count++;
             }
 
-            //for (int i = 0; i < 60; i++)
-            //{
-            //    Console.WriteLine("{0}", cards[i]);
-            //}
-
             myConn.Close();
         }
 
@@ -289,7 +250,6 @@ namespace RandomGiftCardDB
             Console.WriteLine("\n\n---Random Gift Generator By: Eazaz Jakda---");
             Console.ForegroundColor = ConsoleColor.Gray;
 
-
             Console.WriteLine("\n\nChoose an option to run:");
             Console.WriteLine("1. Create Random Gift Card List.");
             Console.WriteLine("2. Display Random Gift Card List.");
@@ -298,7 +258,6 @@ namespace RandomGiftCardDB
             Console.WriteLine("5. High and Low Gift Card Information.");
             Console.WriteLine("6. Exit Application.\n");
         }
-
 
 
     }
