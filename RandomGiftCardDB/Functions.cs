@@ -159,7 +159,7 @@ namespace RandomGiftCardDB
                 //count++;
                 sum = rdr.GetInt32(0);
             }
-            Console.WriteLine("{0}", sum);
+            //Console.WriteLine("{0}", sum);
             myConn.Close();
 
             return sum;
@@ -209,8 +209,8 @@ namespace RandomGiftCardDB
 
             myConn.Close();
 
-            Console.WriteLine("{0}, {1}, {2}", high[0], high[1], high[2]);
-            Console.WriteLine("{0}, {1}, {2}", low[0], low[1], low[2]);
+            Console.WriteLine("Highest: {0}, {1}, ${2}", high[0], high[1], high[2]);
+            Console.WriteLine("Lowest: {0}, {1}, ${2}", low[0], low[1], low[2]);
 
 
             //myConn.Open();
@@ -242,6 +242,61 @@ namespace RandomGiftCardDB
 
 
             //return sum;
+        }
+
+        public static void getRandomListFromDb(MySqlConnection myConn)
+        {
+
+            myConn.Open();
+            string getAll = "SELECT * FROM random;";
+            MySqlCommand CmdTwo = new MySqlCommand(getAll, myConn);
+            MySqlDataReader rdr = CmdTwo.ExecuteReader();
+
+            string[] cards = new string[60];
+            int count = 0;
+            int index = 0;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            string columns = string.Format("{0,-12}{1,8}\t\t{2}\n", "Name", "Card Type", "Amount");            
+            Console.WriteLine(columns);
+            Console.ForegroundColor = ConsoleColor.Gray;
+            while (rdr.Read())
+            {
+                index = count * 3;
+
+                cards[index] = rdr.GetFieldValue<string>(0);
+                cards[index + 1] = rdr.GetFieldValue<string>(1);
+                cards[index + 2] = Convert.ToString(rdr.GetFieldValue<int>(2));
+
+                string output = string.Format("{0,-12}{1,8}\t\t${2}", cards[index], cards[index + 1], cards[index + 2]);
+
+                //Console.WriteLine("{0},\t {1},\t {2}", cards[index], cards[index + 1], cards[index + 2]);
+                Console.WriteLine(output);
+
+                count++;
+            }
+
+            //for (int i = 0; i < 60; i++)
+            //{
+            //    Console.WriteLine("{0}", cards[i]);
+            //}
+
+            myConn.Close();
+        }
+
+        public static void menu()
+        {
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("\n\n---Random Gift Generator By: Eazaz Jakda---");
+            Console.ForegroundColor = ConsoleColor.Gray;
+
+
+            Console.WriteLine("\n\nChoose an option to run:");
+            Console.WriteLine("1. Create Random Gift Card List.");
+            Console.WriteLine("2. Display Random Gift Card List.");
+            Console.WriteLine("3. Average Gift Card Amount.");
+            Console.WriteLine("4. Total Gift Card Amount.");
+            Console.WriteLine("5. High and Low Gift Card Information.");
+            Console.WriteLine("6. Exit Application.\n");
         }
 
 
