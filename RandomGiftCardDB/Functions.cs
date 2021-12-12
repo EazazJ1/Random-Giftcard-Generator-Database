@@ -44,7 +44,7 @@ namespace RandomGiftCardDB
 
             MySqlDataReader rdr = getCardsCmd.ExecuteReader();
             int count = 0;
-                
+
             while (rdr.Read())
             {
                 cards[count] = rdr.GetString(0);
@@ -63,7 +63,7 @@ namespace RandomGiftCardDB
 
             var rand = new Random();
 
-            for(int i = 0; i < 20; i++)
+            for (int i = 0; i < 20; i++)
             {
                 int num = rand.Next(0, 10);
                 int price = rand.Next(9, 101);
@@ -84,7 +84,7 @@ namespace RandomGiftCardDB
         {
             string create = "CREATE TABLE RANDOM (Name varchar(25), Type varchar(25), Amount int);";
             MySqlCommand cmd = new MySqlCommand(create, myConn);
-            
+
             myConn.Open();
             cmd.ExecuteNonQuery();
             myConn.Close();
@@ -99,6 +99,46 @@ namespace RandomGiftCardDB
             myConn.Open();
             cmd.ExecuteNonQuery();
             myConn.Close();
+
+        }
+
+        public static void AddToRandomTable(MySqlConnection myConn, string[] randomCards)
+        {
+            myConn.Open();
+
+            string check = "SELECT * FROM name";
+            MySqlCommand firstcmd = new MySqlCommand(check, myConn);
+            MySqlDataReader rdr = firstcmd.ExecuteReader();
+
+            if(rdr.HasRows)
+            {
+                myConn.Close();
+                dropRandomTable(myConn);                
+            }
+
+            createRandomTable(myConn);
+
+            int count = 0;
+            for (int i = 0; i < 20; i++)
+            {
+                int index = count * 3;
+
+                int amount = Convert.ToInt32(randomCards[index + 2]);
+
+                string insert = "INSERT INTO random VALUES(@name, @type, @amount);";
+                MySqlCommand cmd = new MySqlCommand(insert, myConn);
+
+                cmd.Parameters.AddWithValue("@name", randomCards[index]);
+                cmd.Parameters.AddWithValue("@type", randomCards[index + 1]);
+                cmd.Parameters.AddWithValue("@amount", amount);
+
+                myConn.Open();
+                cmd.ExecuteNonQuery();
+                myConn.Close();
+
+
+                count++;
+            }
 
         }
 

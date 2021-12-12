@@ -15,13 +15,16 @@ namespace RandomGiftCardDB
 
             string[] names = new string[10];
             string[] giftCards = new string[10];
+            string[] randomCards = new string[60];
 
             MySqlConnection myConn = new MySqlConnection(myDb);
             try
             {                
                 names = myFunctions.getNames(myConn);
                 
-                giftCards = myFunctions.getCardTypes(myConn);
+                giftCards = myFunctions.getCardTypes(myConn);               
+
+                randomCards = myFunctions.makeRandom(names, giftCards);
 
                 //for (int i = 0; i < 10; i++)
                 //{
@@ -37,7 +40,9 @@ namespace RandomGiftCardDB
 
                 //myFunctions.createRandomTable(myConn);
 
-                myFunctions.dropRandomTable(myConn);
+                //myFunctions.dropRandomTable(myConn);
+
+                myFunctions.AddToRandomTable(myConn, randomCards);
 
 
             }
@@ -48,9 +53,7 @@ namespace RandomGiftCardDB
 
             myConn.Close();
 
-            string[] randomCards = new string[60];
-
-            randomCards = myFunctions.makeRandom(names, giftCards);
+            
 
             //for (int i = 0; i < 60; i++)
             //{
