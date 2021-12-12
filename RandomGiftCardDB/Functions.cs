@@ -142,7 +142,7 @@ namespace RandomGiftCardDB
 
         }
 
-        public static void getTotalAmount(MySqlConnection myConn)
+        public static int getTotalAmount(MySqlConnection myConn)
         {
             //string[] names = new string[10];
 
@@ -161,6 +161,17 @@ namespace RandomGiftCardDB
             }
             Console.WriteLine("{0}", sum);
             myConn.Close();
+
+            return sum;
+        }
+
+       public static int getAverageAmount(MySqlConnection myConn)
+        {
+            int total = getTotalAmount(myConn);
+
+            int average = total / 20;
+
+            return average;
 
         }
 

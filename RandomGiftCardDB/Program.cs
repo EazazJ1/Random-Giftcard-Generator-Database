@@ -44,7 +44,10 @@ namespace RandomGiftCardDB
 
                 //myFunctions.AddToRandomTable(myConn, randomCards);
 
-                myFunctions.getTotalAmount(myConn);
+                //myFunctions.getTotalAmount(myConn);
+
+                int average = myFunctions.getAverageAmount(myConn);
+                Console.WriteLine("{0}", average);
 
 
             }
