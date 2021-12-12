@@ -4,6 +4,7 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 
 
+
 namespace RandomGiftCardDB
 {
     class Program
@@ -19,42 +20,58 @@ namespace RandomGiftCardDB
             try
             {
                 //Connecting to db and getting the names table and storing in a string array called names
-                myConn.Open();
-                string getNames = "SELECT * FROM name"; 
-                MySqlCommand getNamesCmd = new MySqlCommand(getNames, myConn);
+                //myConn.Open();
+                //string getNames = "SELECT * FROM name";
+                //MySqlCommand getNamesCmd = new MySqlCommand(getNames, myConn);
 
-                MySqlDataReader rdr = getNamesCmd.ExecuteReader();
-                int count = 0;
+                //MySqlDataReader rdr = getNamesCmd.ExecuteReader();
+                //int count = 0;
 
-                Console.WriteLine("Names:");
+                //Console.WriteLine("Names:");
 
-                while (rdr.Read())
-                {
-                    names[count] = rdr.GetString(0);
-                    Console.WriteLine("{0}", names[count]);
-                    count++;                   
-                }
-                myConn.Close();
+                //while (rdr.Read())
+                //{
+                //    names[count] = rdr.GetString(0);
+                //    Console.WriteLine("{0}", names[count]);
+                //    count++;                   
+                //}
+                //myConn.Close();
+                names = myFunctions.getNames(myConn);
+
+
+                //for (int i = 0; i < 10; i++)
+                //{
+                //    Console.WriteLine("{0}", names[i]);
+                //}
+
+
 
 
                 //Connecting to db and getting the gift card types and storing in a string array called giftcards
-                myConn.Open();
-                string getCardTypes = "SELECT * FROM giftcard";
+                //myConn.Open();
+                //string getCardTypes = "SELECT * FROM giftcard";
 
-                MySqlCommand getCardsCmd = new MySqlCommand(getCardTypes, myConn);
+                //MySqlCommand getCardsCmd = new MySqlCommand(getCardTypes, myConn);
 
-                MySqlDataReader rdrTwo = getCardsCmd.ExecuteReader();
+                //MySqlDataReader rdrTwo = getCardsCmd.ExecuteReader();
 
-                count = 0;
-                Console.WriteLine("\n\nGiftCard Types:");
+                //int count = 0;
+                //Console.WriteLine("\n\nGiftCard Types:");
 
-                while (rdrTwo.Read())
-                {
-                    giftCards[count] = rdrTwo.GetString(0);
-                    Console.WriteLine("{0}", giftCards[count]);
-                    count++;
-                }
-                myConn.Close();
+                //while (rdrTwo.Read())
+                //{
+                //    giftCards[count] = rdrTwo.GetString(0);
+                //    Console.WriteLine("{0}", giftCards[count]);
+                //    count++;
+                //}
+                //myConn.Close();
+
+                giftCards = myFunctions.getCardTypes(myConn);
+
+                //for (int i = 0; i < 10; i++)
+                //{
+                //    Console.WriteLine("{0}", giftCards[i]);
+                //}
 
 
             }
