@@ -91,6 +91,17 @@ namespace RandomGiftCardDB
 
         }
 
+        public static void dropRandomTable(MySqlConnection myConn)
+        {
+            string drop = "DROP TABLE RANDOM;";
+            MySqlCommand cmd = new MySqlCommand(drop, myConn);
+
+            myConn.Open();
+            cmd.ExecuteNonQuery();
+            myConn.Close();
+
+        }
+
 
 
 

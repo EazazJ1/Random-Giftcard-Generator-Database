@@ -35,7 +35,9 @@ namespace RandomGiftCardDB
                 //cmd.ExecuteNonQuery();
                 //myConn.Close();
 
-                myFunctions.createRandomTable(myConn);
+                //myFunctions.createRandomTable(myConn);
+
+                myFunctions.dropRandomTable(myConn);
 
 
             }
