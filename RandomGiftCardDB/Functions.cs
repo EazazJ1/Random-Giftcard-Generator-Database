@@ -180,8 +180,8 @@ namespace RandomGiftCardDB
             //string[] names = new string[10];
             string[] high = new string[3];
             myConn.Open();
-            string getTotal = "SELECT * FROM random ORDER BY Amount ASC;";
-            MySqlCommand Cmd = new MySqlCommand(getTotal, myConn);
+            string getHigh = "SELECT * FROM random ORDER BY Amount ASC;";
+            MySqlCommand Cmd = new MySqlCommand(getHigh, myConn);
             MySqlDataReader RDR = Cmd.ExecuteReader();
 
             while(RDR.Read())
