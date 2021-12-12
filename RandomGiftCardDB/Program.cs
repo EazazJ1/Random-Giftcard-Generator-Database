@@ -28,6 +28,15 @@ namespace RandomGiftCardDB
                 //    Console.WriteLine("{0}", giftCards[i]);
                 //}
 
+                //string create = "CREATE TABLE RANDOM (Name varchar(25), Type varchar(25), Amount int);";
+                //MySqlCommand cmd = new MySqlCommand(create, myConn);
+                //myConn.Open();
+
+                //cmd.ExecuteNonQuery();
+                //myConn.Close();
+
+                myFunctions.createRandomTable(myConn);
+
 
             }
             catch (Exception ex)
@@ -41,12 +50,11 @@ namespace RandomGiftCardDB
 
             randomCards = myFunctions.makeRandom(names, giftCards);
 
-            for (int i = 0; i < 65; i++)
-            {
-                Console.WriteLine("{0}", randomCards[i]);
-            }
+            //for (int i = 0; i < 60; i++)
+            //{
+            //    Console.WriteLine("{0}", randomCards[i]);
+            //}
 
-            //var Rand = new Random();
         }
     }
 }

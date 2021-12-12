@@ -57,7 +57,7 @@ namespace RandomGiftCardDB
 
         public static string[] makeRandom(string[] names, string[] types)
         {
-            string[] cards = new string[65];
+            string[] cards = new string[60];
 
             int count = 0;
 
@@ -79,6 +79,19 @@ namespace RandomGiftCardDB
 
             return cards;
         }
+
+        public static void createRandomTable(MySqlConnection myConn)
+        {
+            string create = "CREATE TABLE RANDOM (Name varchar(25), Type varchar(25), Amount int);";
+            MySqlCommand cmd = new MySqlCommand(create, myConn);
+            
+            myConn.Open();
+            cmd.ExecuteNonQuery();
+            myConn.Close();
+
+        }
+
+
 
 
     }
