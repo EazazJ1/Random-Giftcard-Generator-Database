@@ -42,7 +42,9 @@ namespace RandomGiftCardDB
 
                 //myFunctions.dropRandomTable(myConn);
 
-                myFunctions.AddToRandomTable(myConn, randomCards);
+                //myFunctions.AddToRandomTable(myConn, randomCards);
+
+                myFunctions.getTotalAmount(myConn);
 
 
             }

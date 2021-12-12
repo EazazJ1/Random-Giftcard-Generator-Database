@@ -110,16 +110,16 @@ namespace RandomGiftCardDB
             MySqlCommand firstcmd = new MySqlCommand(check, myConn);
             MySqlDataReader rdr = firstcmd.ExecuteReader();
 
-            if(rdr.HasRows)
+            if(rdr.HasRows)     //check to see if table exist
             {
                 myConn.Close();
-                dropRandomTable(myConn);                
+                dropRandomTable(myConn);            //if it does exist then drop it
             }
 
-            createRandomTable(myConn);
+            createRandomTable(myConn);          //create the RANDOM table
 
             int count = 0;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 20; i++)        //Add all the 
             {
                 int index = count * 3;
 
@@ -142,6 +142,27 @@ namespace RandomGiftCardDB
 
         }
 
+        public static void getTotalAmount(MySqlConnection myConn)
+        {
+            //string[] names = new string[10];
+
+            myConn.Open();
+            string getTotal = "SELECT SUM(Amount) AS TotalAmount FROM random;";
+            MySqlCommand Cmd = new MySqlCommand(getTotal, myConn);
+
+            MySqlDataReader rdr = Cmd.ExecuteReader();
+            //int count = 0;
+            int sum = 0;
+            while (rdr.Read())
+            {
+                //names[count] = rdr.GetString(0);
+                //count++;
+                sum = rdr.GetInt32(0);
+            }
+            Console.WriteLine("{0}", sum);
+            myConn.Close();
+
+        }
 
 
 
