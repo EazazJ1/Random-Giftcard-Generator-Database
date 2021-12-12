@@ -17,18 +17,6 @@ namespace RandomGiftCardDB
             {
                 myConn.Open();
 
-                string sql = "SELECt * FROM name";
-
-                MySqlCommand cmd = new MySqlCommand(sql, myConn);
-
-                MySqlDataReader rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
-                {
-                    Console.WriteLine("{0} \n", rdr.GetString(0));
-                }
-
-                myConn.Close();
             }
             catch (Exception ex)
             {
