@@ -47,13 +47,14 @@ namespace RandomGiftCardDB
                             break;
                         case 3:
                             Console.Clear();
-                            int average = myFunctions.getAverageAmount(myConn);
-                            Console.WriteLine("{0}", average);
+                            myFunctions.getAverageAmount(myConn);
+                            //int average = myFunctions.getAverageAmount(myConn);
+                            //Console.WriteLine("{0}", average);
                             break;
                         case 4:
                             Console.Clear();
                             int total = myFunctions.getTotalAmount(myConn);
-                            Console.WriteLine("{0}", total);
+                            Console.WriteLine("\nTotal Amount: ${0}", total);
                             break;
                         case 5:
                             Console.Clear();

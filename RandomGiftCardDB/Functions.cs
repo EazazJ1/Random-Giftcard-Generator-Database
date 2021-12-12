@@ -158,16 +158,19 @@ namespace RandomGiftCardDB
 
             myConn.Close();
 
+            //Console.WriteLine("Total Amount: ${0}", sum);
+
             return sum;
         }
 
-       public static int getAverageAmount(MySqlConnection myConn)
+       public static void getAverageAmount(MySqlConnection myConn)
         {
             int total = getTotalAmount(myConn);
 
             int average = total / 20;
 
-            return average;
+            Console.WriteLine("\nAverage Amount: ${0}", average);
+            //return average;
 
         }
 
@@ -205,8 +208,8 @@ namespace RandomGiftCardDB
 
             myConn.Close();
 
-            Console.WriteLine("Highest: {0}, {1}, ${2}", high[0], high[1], high[2]);
-            Console.WriteLine("Lowest: {0}, {1}, ${2}", low[0], low[1], low[2]);
+            Console.WriteLine("\nHighest: {0}, {1}, ${2}", high[0], high[1], high[2]);
+            Console.WriteLine("\nLowest: {0}, {1}, ${2}", low[0], low[1], low[2]);
 
         }
 
