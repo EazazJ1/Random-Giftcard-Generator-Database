@@ -22,9 +22,7 @@ namespace RandomGiftCardDB
             {
                 names = myFunctions.getNames(myConn);           //get the names table
 
-                giftCards = myFunctions.getCardTypes(myConn);       //get the cardTypes tables
-
-                randomCards = myFunctions.makeRandom(names, giftCards);     //create the list of the random giftcards to be added to db
+                giftCards = myFunctions.getCardTypes(myConn);       //get the cardTypes tables               
 
                 int killswitch = 0;         //condition to exit while loop
 
@@ -50,6 +48,7 @@ namespace RandomGiftCardDB
                         {
                             case 1:     //create random gift card list
                                 Console.Clear();
+                                randomCards = myFunctions.makeRandom(names, giftCards);     //create the list of the random giftcards to be added to db
                                 myFunctions.AddToRandomTable(myConn, randomCards);
                                 break;
                             case 2:     //Display Random Gift Card List
